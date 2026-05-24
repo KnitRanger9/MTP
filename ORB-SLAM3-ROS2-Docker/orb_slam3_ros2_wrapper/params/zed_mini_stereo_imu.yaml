@@ -1,0 +1,14 @@
+orb_slam3:
+  ros__parameters:
+    rgb_image_topic_name: "/zed/zed_node/rgb/image_rect_color"
+    depth_image_topic_name: "/zed/zed_node/depth/depth_registered" 
+    imu_topic_name: "/zed/zed_node/imu/data_raw"
+    robot_base_frame: "base_link"
+    global_frame: "map"
+    odom_frame: "odom"
+    visualization: false
+    odometry_mode: false
+    publish_tf: true
+    map_data_publish_frequency: 1000
+    do_loop_closing: true
+

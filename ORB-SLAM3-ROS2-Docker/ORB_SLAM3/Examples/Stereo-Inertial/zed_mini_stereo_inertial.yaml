@@ -1,0 +1,78 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# ZED Mini Stereo + IMU Parameters
+#--------------------------------------------------------------------------------------------
+
+Camera.type: "PinHole"
+
+# LEFT camera intrinsics (from /zed/zed_node/left/camera_info)
+Camera.fx: 698.295
+Camera.fy: 698.6
+Camera.cx: 626.112
+Camera.cy: 380.019
+
+Camera.k1: 0.0  # Rectified = no distortion
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
+Camera.k3: 0.0
+
+Camera2.fx: 698.046
+Camera2.fy: 698.508
+Camera2.cx: 632.055
+Camera2.cy: 351.543
+
+Camera2.k1: 0.0
+Camera2.k2: 0.0
+Camera2.p1: 0.0
+Camera2.p2: 0.0
+
+Tlr: !!opencv-matrix
+  rows: 3
+  cols: 4
+  dt: f
+  data: [ 1.0, -5.25361e-05, 0.0046989, -0.063,
+          5.25361e-05, 1.0, 0.00266326, 0.0384435,
+          -0.0046989, -0.0026633, 1.0, -0.042574]
+
+# Camera resolution
+Camera.width: 672
+Camera.height: 376
+Camera.fps: 15.0
+
+# Baseline (m) * fx = stereo disparity scaling
+# From right/camera_info: bf = -P[3,0] / fx (negative for right cam)
+Camera.bf: 4.3974  # Typical ZED Mini baseline ~0.12m * fx ~273 = 32.76, tune!
+
+Camera.RGB: 1  # BGR (ZED default)
+ThDepth: 10.0
+
+# IMU noise (tune from ZED covariances)
+IMU.NoiseGyro:   1.7e-04   # rad/s/sqrt(Hz)
+IMU.NoiseAcc:    2.8e-03     # m/s^2/sqrt(Hz)
+IMU.GyroWalk:    4.4e-06 # rad/s^2/sqrt(Hz)
+IMU.AccWalk:     1.6e-04   # m/s^3/sqrt(Hz)
+IMU.Frequency: 100
+
+# Camera0 (left) -> IMU transform (from ZED TF)
+Tbc: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [0.0021568758, -0.019047705, 0.99981624, 0.002,
+         -0.9993482,  0.03598704, 0.0028414626, 0.015,
+         -0.036034547, -0.9991707, -0.01895767, 0.002,
+         0.0,        0.0,        0.0,        1.0]
+
+# ORB params
+ORBextractor.nFeatures: 900
+ORBextractor.scaleFactor: 1.2
+ORBextractor.nLevels: 8
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+# Viewer
+Viewer.KeyFrameSize: 0.05
+System.SaveAtlasToFile: ./zed_mini_atlas
+
