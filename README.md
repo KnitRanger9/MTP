@@ -69,7 +69,7 @@ Eg.:
 
 ### ORB_SLAM3 repository tree
 ```
-ORB-SLAM3-ROS2-Docker/ORB_SLAM3/
+ORB_SLAM3/
 ├── src/
 │   ├── Atlas.cc
 │   ├── CameraModels/KannalaBrandt8.cpp
