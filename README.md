@@ -185,13 +185,15 @@ settings file: ZED_stereo.yaml
 
 ### Setup
 - Clone the github repo from [suchetanrs's repository](https://github.com/suchetanrs/ORB-SLAM3-ROS2-Docker.git) and follow the instructions [build without CUDA]
-- Copy the launch file `orb_slam3_ros2_wrapper/launch/rgbd.launch.py` to the repo folder 
+- Copy the launch file `orb_slam3_ros2_wrapper/launch/rgbd.launch.py` to the launch folder and `ORB_SLAM3/Examples/RGB-D-Inertial/zed_mini_rgbd_inertial.yaml` to the params folder, and update the paths in the code
+- Run `rqt_graph` to get the names of all the nodes both inside and outside Docker and update their names (node remapping) in the code
 - Run these three lines inside and outside Docker:
     - `export ROS_DOMAIN_ID=0`
     - `export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp`
     - `unset CYCLONEDDS_URI`
 - Run the ZED camera node outside Docker using `ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedm publish_imu_tf:=false enable_positional_tracking:=true sarea_memory:=false`
 - Run ORB-SLAM3 launch file: `ros2 launch orb_slam3_ros2_wrapper zed_mini_stereo_imu.launch.py`
+- Run `save_poses.py` to record pose estimates for ORB-SLAM3 and ZED odometry api
 
 ### ORB-SLAM3-ROS2-Docker launch files
 ```
@@ -201,8 +203,19 @@ ORB-SLAM3-ROS2-Docker/orb_slam3_ros2_wrapper/launch/
 └── zed_mini_stereo_imu.launch.py
 ```
 
+### ORB-SLAM3-ROS2-Docker params files
+```
+ORB-SLAM3-ROS2-Docker/orb_slam3_ros2_wrapper/params/
+├── gazebo_rgbd.yaml
+├── orbbec_astra.yaml
+├── rgbd-ros-params.yaml
+├── zed2i_kratos.yaml
+├── zed2i.yaml
+└── zed_mini_stereo_imu.yaml
+```
+
 ### Config directory status
-This repository does not include a top-level `config/` folder for ORB-SLAM3-ROS2-Docker. Configuration and camera settings are provided through YAML files under `ORB-SLAM3-ROS2-Docker/ORB_SLAM3/Examples/`.
+This repository does not include a top-level `config/` folder for ORB-SLAM3-ROS2-Docker. Configuration and camera settings are provided through YAML files under `ORB-SLAM3-ROS2-Docker/ORB_SLAM3/Examples/` and `ORB-SLAM3-ROS2-Docker/orb_slam3_ros2_wrapper/params/`.
 
 ### Output files
 - `zed_mini_poses_zed.txt`: contains pose estimates of ZED Mini camera's SLAM API
