@@ -124,7 +124,7 @@ and Stereolabs SDK license for relevant terms.
 
 ## Part 2: Stereo ORB-SLAM3
 
-**Code file:** [ORB_SLAM3/Examples/Stereo/stereo_ZED.cc](ORB_SLAM3/Examples/Stereo/stereo_ZED.cc)
+**Code file:** [ORB_SLAM3/Examples/Stereo/stereo_ZED.cc](ORB_SLAM3/Examples/Stereo/stereo_ZED.cc) <br>
 **Settings file:** [ORB_SLAM3/Examples/Stereo/ZED_stereo.yaml](ORB_SLAM3/Examples/Stereo/ZED_stereo.yaml)
 
 Runs ORB-SLAM3 in stereo mode with a ZED camera. Captures left/right grayscale frames,
@@ -295,7 +295,7 @@ and Stereolabs SDK license for relevant terms.
 
 ## Part 3: RGB-D Inertial ORB-SLAM3 (ROS 2)
 
-**Launch file:** [ros2_ws/launch/rgbd.launch.py](ros2_ws/launch/rgbd.launch.py)
+**Launch file:** [ros2_ws/launch/rgbd.launch.py](ros2_ws/launch/rgbd.launch.py) <br>
 **Settings file:** [ORB_SLAM3/Examples/RGB-D-Inertial/zed_mini_rgbd_inertial.yaml](ORB_SLAM3/Examples/RGB-D-Inertial/zed_mini_rgbd_inertial.yaml)
 
 Runs ORB-SLAM3 in RGB-D inertial mode inside a Docker container, subscribing to a ZED
