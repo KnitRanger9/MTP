@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+"""
+Launch file for the ORB-SLAM3 ROS2 wrapper in RGB-D mode.
+
+This module declares ROS2 launch arguments, loads parameter files, and
+starts the ORB-SLAM3 RGB-D wrapper node in the specified namespace.
+"""
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -14,10 +20,11 @@ from launch_ros.substitutions import FindPackageShare
 from nav2_common.launch import RewrittenYaml
 
 def generate_launch_description():
+    """Create and return the ROS2 launch description for ORB-SLAM3 RGB-D."""
 
 #---------------------------------------------
 
-    #Essential_paths
+    # Essential paths
     orb_wrapper_pkg = get_package_share_directory('orb_slam3_ros2_wrapper')
 #---------------------------------------------
 
@@ -34,6 +41,7 @@ def generate_launch_description():
 #---------------------------------------------
 
     def all_nodes_launch(context, robot_namespace):
+        """Return the actions needed to launch the ORB-SLAM3 RGB-D node."""
         params_file = LaunchConfiguration('params_file')
         vocabulary_file_path = "/home/orb/ORB_SLAM3/Vocabulary/ORBvoc.txt"
         config_file_path = "/root/colcon_ws/src/orb_slam3_ros2_wrapper/params/gazebo_rgbd.yaml"

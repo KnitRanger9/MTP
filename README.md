@@ -10,7 +10,7 @@ The repository contains codes of three slam settings:
 3. RGBD based ORB-SLAM3 (in ros2, cpp, python)
 
 ## Part 1: Superpoint based SLAM
-Code file: train2_updated.py
+Code file: train2_updated_3.py
 <br>
 link: [Click Here](https://drive.google.com/file/d/1_P4dLI2Mz064J_z3YtkUUDM0CrtstLi6/view?usp=sharing)
 
@@ -48,7 +48,9 @@ This example shows how to run ORB-SLAM3 in stereo mode using a Stereolabs ZED ca
 Usage:
 
 ```
-./stereo_realsense_t265 path_to_vocabulary path_to_settings (trajectory_file_name)
+<path_to_exe_file> <path_to_vocabulary> <path_to_settings> (trajectory_file_name)
+Eg.: 
+./Stereo/build/stereo_zed ../Vocabulary/ORBvoc.txt ./Stereo/build/ZED_stereo.yaml dataset-ZED_stereo
 ```
 
 - `path_to_vocabulary`: ORB vocabulary file used by ORB-SLAM3 (e.g., `ORBvoc.txt`).
