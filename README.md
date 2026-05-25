@@ -65,6 +65,105 @@ Usage:
     - `make -j2`
 - Run the slam algorithm using bash: `./Examples/Stereo/stereo_euroc ./Vocabulary/ORBvoc.txt ./Examples/Stereo/EuRoC.yaml ~/Datasets/EuRoc/MH01 ./Examples/Stereo/EuRoC_TimeStamps/MH01.txt dataset-MH01_stereo`
 
+### ORB_SLAM3 repository tree
+```
+ORB-SLAM3-ROS2-Docker/ORB_SLAM3/
+├── src/
+│   ├── Atlas.cc
+│   ├── CameraModels/KannalaBrandt8.cpp
+│   ├── CameraModels/Pinhole.cpp
+│   ├── Config.cc
+│   ├── Converter.cc
+│   ├── Frame.cc
+│   ├── FrameDrawer.cc
+│   ├── G2oTypes.cc
+│   ├── GeometricTools.cc
+│   ├── ImuTypes.cc
+│   ├── KeyFrame.cc
+│   ├── KeyFrameDatabase.cc
+│   ├── LocalMapping.cc
+│   ├── LoopClosing.cc
+│   ├── Map.cc
+│   ├── MapDrawer.cc
+│   ├── MapPoint.cc
+│   ├── MLPnPsolver.cpp
+│   ├── OptimizableTypes.cpp
+│   ├── Optimizer.cc
+│   ├── ORBextractor.cc
+│   ├── ORBmatcher.cc
+│   ├── Settings.cc
+│   ├── Sim3Solver.cc
+│   ├── System.cc
+│   ├── Tracking.cc
+│   ├── TwoViewReconstruction.cc
+│   └── Viewer.cc
+└── Examples/
+    ├── Calibration/
+    │   ├── recorder_realsense_D435i.cc
+    │   └── recorder_realsense_T265.cc
+    ├── Monocular/
+    │   ├── EuRoC.yaml
+    │   ├── KITTI00-02.yaml
+    │   ├── KITTI03.yaml
+    │   ├── KITTI04-12.yaml
+    │   ├── mono_euroc.cc
+    │   ├── mono_kitti.cc
+    │   ├── mono_realsense_D435i.cc
+    │   ├── mono_realsense_t265.cc
+    │   ├── mono_tum.cc
+    │   ├── mono_tum_vi.cc
+    │   ├── RealSense_D435i.yaml
+    │   ├── RealSense_T265.yaml
+    │   ├── TUM1.yaml
+    │   ├── TUM2.yaml
+    │   ├── TUM3.yaml
+    │   └── TUM-VI.yaml
+    ├── Monocular-Inertial/
+    │   ├── EuRoC.yaml
+    │   ├── mono_inertial_euroc.cc
+    │   ├── mono_inertial_realsense_D435i.cc
+    │   ├── mono_inertial_realsense_t265.cc
+    │   ├── mono_inertial_tum_vi.cc
+    │   ├── RealSense_D435i.yaml
+    │   ├── RealSense_T265.yaml
+    │   ├── TUM-VI.yaml
+    │   └── TUM-VI_far.yaml
+    ├── RGB-D/
+    │   ├── RealSense_D435i.yaml
+    │   ├── rgbd_realsense_D435i.cc
+    │   ├── rgbd_tum.cc
+    │   ├── TUM1.yaml
+    │   ├── TUM2.yaml
+    │   ├── TUM3.yaml
+    ├── RGB-D-Inertial/
+    │   ├── RealSense_D435i.yaml
+    │   ├── rgbd_inertial_realsense_D435i.cc
+    │   ├── zed_mini_rgbd_inertial (Copy).yaml
+    │   └── zed_mini_rgbd_inertial.yaml
+    ├── Stereo/
+    │   ├── EuRoC.yaml
+    │   ├── KITTI00-02.yaml
+    │   ├── KITTI03.yaml
+    │   ├── KITTI04-12.yaml
+    │   ├── RealSense_D435i.yaml
+    │   ├── RealSense_T265.yaml
+    │   ├── stereo_euroc.cc
+    │   ├── stereo_kitti.cc
+    │   ├── stereo_realsense_D435i.cc
+    │   ├── stereo_realsense_t265.cc
+    │   ├── stereo_tum_vi.cc
+    │   └── TUM-VI.yaml
+    └── Stereo-Inertial/
+        ├── EuRoC.yaml
+        ├── RealSense_D435i.yaml
+        ├── RealSense_T265.yaml
+        ├── stereo_inertial_euroc.cc
+        ├── stereo_inertial_realsense_D435i.cc
+        ├── stereo_inertial_realsense_t265.cc
+        ├── TUM-VI.yaml
+        └── TUM-VI_far.yaml
+```
+
 Install and build steps will vary by platform. Example placeholders:
 
 ### Output files
@@ -93,6 +192,17 @@ settings file: ZED_stereo.yaml
     - `unset CYCLONEDDS_URI`
 - Run the ZED camera node outside Docker using `ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedm publish_imu_tf:=false enable_positional_tracking:=true sarea_memory:=false`
 - Run ORB-SLAM3 launch file: `ros2 launch orb_slam3_ros2_wrapper zed_mini_stereo_imu.launch.py`
+
+### ORB-SLAM3-ROS2-Docker launch files
+```
+ORB-SLAM3-ROS2-Docker/orb_slam3_ros2_wrapper/launch/
+├── rgbd.launch.py
+├── unirobot.launch.py
+└── zed_mini_stereo_imu.launch.py
+```
+
+### Config directory status
+This repository does not include a top-level `config/` folder for ORB-SLAM3-ROS2-Docker. Configuration and camera settings are provided through YAML files under `ORB-SLAM3-ROS2-Docker/ORB_SLAM3/Examples/`.
 
 ### Output files
 - `zed_mini_poses_zed.txt`: contains pose estimates of ZED Mini camera's SLAM API
