@@ -435,12 +435,4 @@ and Stereolabs SDK license for relevant terms.
 
 ---
 
-## Huggingface
 
-Models and datasets for this project are hosted on Huggingface under the
-**Biosystems Engineering and Control Group** organisation.
-
-- Join the group: [Biosystems Engineering and Control Group](https://huggingface.co/BiosystemsEngineeringAndControl)
-- Upload the trained SuperPoint weights and any recorded datasets with an appropriate
-  model card describing the training procedure, evaluation metrics, and intended use.
-- *(Optional)* Create a Huggingface Space for an interactive demo of the SLAM pipeline.
